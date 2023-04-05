@@ -1,0 +1,44 @@
+@import "../../styles.scss";
+
+.fillter__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &-visible {
+        background: #F2F2F2;
+        border-radius: 40px;
+        padding: 7px;
+        width: rem(36px);
+        display: flex;
+        justify-content: flex-start;
+        transition: .3s;
+        margin-right: rem(12px);
+    }
+    
+    &-circ {
+        background: #000;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+        display: block;
+    }
+}
+
+.fillter__input {
+    display: none;
+}
+
+.fillter__name {
+    text-transform: uppercase;
+    font-size: rem(12px);
+}
+
+.fillter__input:checked ~  .fillter__item-visible {
+    background: $backgroundBtn;
+    justify-content: flex-end;
+}
+
+

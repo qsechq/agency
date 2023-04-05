@@ -1,0 +1,112 @@
+$color-black: #1F2020;
+$baseFontSize: 16px;
+$backgroundBtn: #7BB899;
+$small-width: 990px;
+$tablets: 768px;
+$phones: 420px;
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color-black;
+  font-size: $baseFontSize;
+  line-height: 1.8;
+  margin: 0;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0 0;
+}
+
+svg {
+  display: block;
+  color: $color-black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Inter';
+  font-style: normal;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.wrapper {
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: rem(1790px);
+}
+
+
+@mixin small-width {
+  @media screen and (max-width: $small-width) {
+
+    @content;
+
+  }
+}
+
+@mixin tablets {
+  @media screen and (max-width: $tablets) {
+
+    @content;
+
+  }
+}
+
+@mixin phones {
+  @media screen and (max-width: $phones) {
+
+    @content;
+
+  }
+}
+
+@function rem($px) {
+    @return $px / $baseFontSize + 0rem
+}
