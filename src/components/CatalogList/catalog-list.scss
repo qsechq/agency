@@ -1,0 +1,14 @@
+@import "../../styles.scss";
+
+.c-catalog__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.catalog__item {
+    width: calc( 19% - 24px);
+    margin-right: rem(24px);
+    &:nth-child(5n) {
+        margin-right: 0;
+    }
+}

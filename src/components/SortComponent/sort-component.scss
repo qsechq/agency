@@ -1,0 +1,10 @@
+@import "../../styles.scss";
+
+.sort__btn::after {
+    content: "";
+    display: inline-block;
+    border: 4px solid transparent;
+    border-top: 5px solid $color-black;
+    margin-left: 5px;
+    margin-bottom: -2px;
+}

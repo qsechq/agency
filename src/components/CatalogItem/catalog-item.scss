@@ -1,0 +1,37 @@
+@import "../../styles.scss";
+
+.item {
+
+    &__img {
+        width: 100%;
+    }
+
+    &__name {
+        font-weight: 300;
+        line-height: rem(18px);
+        padding: 16px 0;
+    }
+    
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &-price {
+            font-weight: 600;
+        }
+        &-btn {
+            background: $backgroundBtn;
+            padding: 6px 32px;
+            border-radius: 8px;
+            transition: .3s;
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        & .item__footer-btn {
+            display: block;
+            opacity: 1;
+        }
+    }
+}
