@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    white-space: nowrap;
     &:last-child {
         margin-bottom: 0;
     }
@@ -34,6 +35,7 @@
 .fillter__name {
     text-transform: uppercase;
     font-size: rem(12px);
+    letter-spacing: 0.06em;
 }
 
 .fillter__input:checked ~  .fillter__item-visible {

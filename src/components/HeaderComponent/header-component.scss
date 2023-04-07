@@ -13,7 +13,7 @@
 
     & .nav {
         padding: 0;
-        margin-right: 29.5%;
+        flex-grow: 1;
         &__list {
             display: flex;
             align-items: center;
@@ -41,6 +41,7 @@
         align-items: flex-start;
         line-height: rem(16px);
         white-space: nowrap;
+        margin-right: 6.5%;
         &__phone {
             font-weight: 500;
             letter-spacing: -0.02em;

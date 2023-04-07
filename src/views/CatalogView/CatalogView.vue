@@ -4,7 +4,7 @@
             <header-component />
         </div>
     </header>
-    <swiper :pagination="true" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange"
+    <swiper id="swiper" :pagination="true" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange"
         :navigation="true" :modules="modules">
         <swiper-slide>
             <img src="../../assets/slider.png" alt="product" class="swiper__img">

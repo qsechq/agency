@@ -10,6 +10,7 @@
         font-weight: 300;
         line-height: rem(18px);
         padding: 16px 0;
+        letter-spacing: 0.02em;
     }
     
     &__footer {
@@ -21,7 +22,7 @@
         }
         &-btn {
             background: $backgroundBtn;
-            padding: 6px 32px;
+            padding: 6px 30px;
             border-radius: 8px;
             transition: .3s;
             opacity: 0;

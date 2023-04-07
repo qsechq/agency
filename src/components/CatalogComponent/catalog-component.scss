@@ -1,7 +1,17 @@
+@import "../../styles.scss";
+
 .catalog {
     display: flex;
 }
 
 .settings {
     width: 100%;
+}
+
+.fillter {
+    margin-right: rem(138px);
+}
+
+.settings {
+    margin-bottom: rem(44px);
 }

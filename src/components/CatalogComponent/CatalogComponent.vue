@@ -1,12 +1,18 @@
 <template>
     <div class="container">
-        <section class="catalog">
-            <div class="fillter">
-                <fillter-type />
-            </div>
-            <div class="settings">
-                <settings-component />
-                <catalog-list />
+        <section class="catalog-section">
+            <div class="catalog">
+                <div class="fillter">
+                    <fillter-type />
+                </div>
+                <div class="wrapp">
+                    <div class="settings">
+                        <settings-component />
+                    </div>
+                    <div class="catalog__list">
+                        <catalog-list />
+                    </div>
+                </div>
             </div>
         </section>
     </div>

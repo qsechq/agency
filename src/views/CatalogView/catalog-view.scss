@@ -1,13 +1,11 @@
 @import "../../styles.scss";
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    max-width: rem(1790px);
-}
-
 .header {
     padding: rem(36px) 0;
+}
+
+.swiper {
+    margin-bottom: rem(72px);
 }
 
 .swiper-button-next {
@@ -20,7 +18,7 @@
     width: 80px;
     height: 80px;
     z-index: 2;
-    top: 60%;
+    top: 59%;
     right: 20.5%;
     &::after {
         content: "";
@@ -43,7 +41,7 @@
     width: 80px;
     height: 80px;
     z-index: 2;
-    top: 60%;
+    top: 59%;
     left: 20.5%;
     &::after {
         content: "";
@@ -63,22 +61,28 @@
 
 .swiper .swiper-pagination {
     left: 50%;
+    transform: translateX(-50%);
     width: fit-content;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 16px;
-    padding: 13px 22px;
+    padding: 13px 24px;
     display: flex;
     align-items: center;
+    bottom: rem(39px);
 }
 
-.swiper .swiper-pagination-bullet {
+#swiper .swiper-pagination-bullet {
     width: 6px;
     height: 6px;
     margin: 0;
     background: #FFFFFF;
+    margin: 0 8px 0 0;
     opacity: 0.2;
+    &:last-child {
+        margin-right: 0;
+    }
 }
 
-.swiper .swiper-pagination-bullet-active {
+#swiper  .swiper-pagination-bullet-active {
     opacity: 1;
 }
