@@ -1,6 +1,19 @@
 @import "../../styles.scss";
 
-.sort__btn {
+.c-sort {
+    position: relative;
+}
+
+.sort__wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.sort__active {
     letter-spacing: 0.06em;
     &::after {
         content: "";
