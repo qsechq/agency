@@ -10,7 +10,7 @@
                         <settings-component />
                     </div>
                     <div class="catalog__list">
-                        <catalog-list :products="products"/>
+                        <catalog-list :products="sortedProducts" />
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@ import { FillterType } from '../FillterType'
 import { SettingsComponent } from '../SettingsComponent'
 import { CatalogList } from "../CatalogList"
 import { useStore } from 'vuex'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted  } from 'vue'
 
 export default {
     name: 'CatalogComponent',
@@ -33,13 +33,14 @@ export default {
         CatalogList
     },
     setup() {
-        const { dispatch, state } = useStore()
-        const products = computed(() => state.products)
-        onMounted(() => {
+        const { dispatch, getters } = useStore()
+        const sortedProducts = computed(() => getters.sortedProducts)
+        onMounted( () => {
             dispatch('products/getProducts')
+            console.log(getters);
         })
         return {
-            products
+            sortedProducts
         }
     }
 }

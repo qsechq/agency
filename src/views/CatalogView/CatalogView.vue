@@ -30,7 +30,7 @@
         <modal-component :isShow="isShow">
             <template #content>
                 <div class="basket">
-                    <basket-component />
+                    <basket-component @closeModal="closeModal"/>
                 </div>
             </template>
         </modal-component>
@@ -69,12 +69,16 @@ export default {
         const openBasket = () => {
             isShow.value = true
         };
+        const closeModal = () => {
+            isShow.value = false
+        };
         return {
             onSwiper,
             onSlideChange,
             modules: [Pagination, Navigation],
             isShow,
-            openBasket
+            openBasket,
+            closeModal
         };
     },
 }

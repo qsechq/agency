@@ -4,7 +4,7 @@
         <div class="item__name">{{ name }}</div>
         <div class="item__footer">
             <div class="item__footer-price">{{ price }} ₽</div>
-            <button class="item__footer-btn">
+            <button class="item__footer-btn" @click="$emit('onAddToCart', id)">
                 <my-icon name="PlusSvg" class="item__footer-icon" />
             </button>
         </div>
@@ -16,12 +16,17 @@ import { MyIcon } from '../../icons'
 
 export default {
     name: 'CatalogItem',
+    emits: ['onAddToCart'],
     props: {
         name: {
             type: String,
             required: true
         },
         price: {
+            type: Number,
+            required: true
+        },
+        id: {
             type: Number,
             required: true
         }

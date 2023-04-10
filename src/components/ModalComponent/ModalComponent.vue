@@ -20,7 +20,7 @@ export default {
             default: false
         }
     },
-    setup(props, context) {
+    setup(props) {
         const { isShow } = toRefs(props)
         const closeModal = () => {
             isShow.value = false

@@ -55,7 +55,7 @@
                 </li>
                 <li @click="$emit('openBasket')" class="icons__item icons__basket">
                     <a href="#" class="icons__link">
-                        <span class="icons__count">4</span>
+                        <span class="icons__count">{{ order.order.length }}</span>
                     </a>
                 </li>
             </ul>
@@ -65,6 +65,8 @@
 
 <script>
 import { MyIcon } from '../../icons'
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
     name: 'HeaderComponent',
@@ -73,7 +75,14 @@ export default {
         MyIcon
     },
     setup() {
-        
+        const { dispatch, state } = useStore()
+        const order = computed(() => state.order)
+        onMounted(() => {
+            dispatch('order/getOrder')
+        })
+        return {
+            order
+        }
     }
 }
 </script>

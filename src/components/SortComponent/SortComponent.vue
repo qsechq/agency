@@ -6,16 +6,16 @@
                 <template #content>
                     <ul :style="{ top: openModal() + 'px'}" class="sort__list" ref="test">
                         <li class="sort__item">
-                            <button class="sort__btn">СНАЧАЛА ДОРОГИЕ</button>
+                            <button @click="changeFillter('expensive')" class="sort__btn">СНАЧАЛА ДОРОГИЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button class="sort__btn">СНАЧАЛА НЕДОРОГИЕ</button>
+                            <button @click="changeFillter('cheap')" class="sort__btn">СНАЧАЛА НЕДОРОГИЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button class="sort__btn">СНАЧАЛА ПОПУЛЯРНЫЕ</button>
+                            <button @click="changeFillter('popular')" class="sort__btn">СНАЧАЛА ПОПУЛЯРНЫЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button class="sort__btn">СНАЧАЛА НОВЫЕ</button>
+                            <button @click="changeFillter('new')" class="sort__btn">СНАЧАЛА НОВЫЕ</button>
                         </li>
                     </ul>
                 </template>
@@ -26,7 +26,8 @@
 
 <script>
 import { ModalComponent } from '../ModalComponent'
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
     name: 'SortComponent',
@@ -34,6 +35,10 @@ export default {
         ModalComponent
     },
     setup() {
+        const { dispatch } = useStore()
+        const changeFillter = (value) => {
+            dispatch('products/changeFillter', value)
+        }
         const isShow = ref(false)
         const sort = ref(null)
         const test = ref(null)
@@ -50,7 +55,8 @@ export default {
             isShow,
             sort,
             openModal,
-            test
+            test,
+            changeFillter
         }
     }
 }

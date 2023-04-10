@@ -3,14 +3,14 @@
         <img class="basket__item-img" src="../../assets/Photo.png" alt="">
         <div class="basket__item-main">
             <div class="basket__item-wrap">
-                <div class="basket__item-name">Краска Wallquest, Brownsone MS90102</div>
-                <div class="bakset__item-price">9600 ₽</div>
+                <div class="basket__item-name">{{ name }}</div>
+                <div class="bakset__item-price">{{ price }} ₽</div>
             </div>
             <div class="basket__item-control">
                 <button class="basket__item-btn"><my-icon name="MinusSvg" class="basket__item-icon" /></button>
-                <span class="basket__item-quantity">1</span>
+                <span class="basket__item-quantity">{{ quantity }}</span>
                 <button class="basket__item-btn"><my-icon name="PlusSvg" class="basket__item-icon" /></button>
-                <button class="basket__item-remove">
+                <button class="basket__item-remove" @click="$emit('onRemoveProductAtCart', id)">
                     <my-icon name="CloseSvg" class="basket__item-icon" />
                 </button>
             </div>
@@ -25,6 +25,25 @@ export default {
     name: 'BasketItem',
     components: {
         MyIcon
+    },
+    emits: ['onRemoveProductAtCart'],
+    props: {
+        id: {
+            type: Number,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number,
+            required: true
+        },
+        quantity: {
+            type: Number,
+            required: true
+        }
     }
 }
 </script>
