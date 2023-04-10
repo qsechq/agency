@@ -1,0 +1,74 @@
+@import "../../styles.scss";
+
+.c-basket__item {
+    display: flex;
+    border-top: 1px solid rgb(0, 0, 0, 0.1);
+    padding: 12px 0;
+    width: 100%;
+}
+
+.basket__item-name {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 112%;
+    letter-spacing: 0.02em;
+}
+
+.basket__item-img {
+    max-width: rem(96px);
+    max-height: rem(96px);
+    margin-right: 8px;
+}
+
+.basket__item-wrap {
+    max-width: rem(170px);
+}
+
+.basket__item-remove {
+    margin-left: rem(37px);
+    & .basket__item-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.basket__item-wrap {
+    padding: rem(14px) 0;
+}
+
+.basket__item-btn {
+    padding: 4px 12px;
+    & .basket__item-icon {
+        width: 16px;
+        height: 16px;
+        stroke-width: 1.4px;
+    }
+}
+
+.basket__item-control {
+    display: flex;
+    align-items: center;
+}
+
+.bakset__item-price {
+    font-weight: 600;
+    font-size:rem(16px);
+    padding-top: rem(16px);
+    line-height: 100%;
+}
+
+.basket__item-quantity {
+    margin: 0 19px;
+}
+
+.basket__item-main {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.basket__item-btn {
+    background: #F2F2F2;
+    border-radius: 4px;
+}

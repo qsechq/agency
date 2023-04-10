@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="container">
-            <header-component />
+            <header-component @openBasket="openBasket"/>
         </div>
     </header>
     <swiper id="swiper" :pagination="true" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange"
@@ -26,13 +26,25 @@
         </swiper-slide>
     </swiper>
     <catalog-component />
+    <teleport to="#basket">
+        <modal-component :isShow="isShow">
+            <template #content>
+                <div class="basket">
+                    <basket-component />
+                </div>
+            </template>
+        </modal-component>
+    </teleport>
 </template>
 
 <script>
 import { HeaderComponent } from '../../components/HeaderComponent'
+import { BasketComponent } from '../../components/BasketComponent'
+import { ModalComponent } from '../../components/ModalComponent'
 import { CatalogComponent } from '@/components/CatalogComponent'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination, Navigation } from 'swiper'
+import { ref } from 'vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
@@ -42,7 +54,9 @@ export default {
         HeaderComponent,
         Swiper,
         SwiperSlide,
-        CatalogComponent
+        CatalogComponent,
+        ModalComponent,
+        BasketComponent
     },
     setup() {
         const onSwiper = (swiper) => {
@@ -51,10 +65,16 @@ export default {
         const onSlideChange = () => {
             console.log('slide change');
         };
+        let isShow = ref(false)
+        const openBasket = () => {
+            isShow.value = true
+        };
         return {
             onSwiper,
             onSlideChange,
-            modules: [Pagination, Navigation]
+            modules: [Pagination, Navigation],
+            isShow,
+            openBasket
         };
     },
 }

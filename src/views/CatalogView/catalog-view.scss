@@ -3,6 +3,12 @@
 .header {
     padding: rem(36px) 0;
 }
+.basket {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
 
 .swiper {
     margin-bottom: rem(72px);

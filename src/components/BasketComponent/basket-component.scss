@@ -1,0 +1,56 @@
+@import "../../styles.scss";
+
+.c-basket {
+    background: #fff;
+    height: 100%;
+    width: rem(600px);
+    padding: 40px;
+}
+
+.basket__title {
+    font-weight: 500;
+    font-size: rem(30px);
+    line-height: 88%;
+    letter-spacing: -0.04em;
+}
+
+.basket__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(80px);
+}
+
+.basket__control {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.basket__control-count {
+    font-size: rem(14px);
+    line-height: 112%;
+}
+
+.basket__control-remove {
+    font-weight: 300;
+    font-size: rem(14px);
+    opacity: 0.4;
+    line-height: 112%;
+}
+
+.basket__btn {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket__icon {
+    width: 24px;
+    height: 24px;
+}

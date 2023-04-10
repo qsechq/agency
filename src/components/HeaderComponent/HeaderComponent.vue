@@ -53,7 +53,7 @@
                         <my-icon name="HeartSvg" class="icons__icon icons__icon-heart" />
                     </a>
                 </li>
-                <li class="icons__item icons__basket">
+                <li @click="$emit('openBasket')" class="icons__item icons__basket">
                     <a href="#" class="icons__link">
                         <span class="icons__count">4</span>
                     </a>
@@ -68,8 +68,12 @@ import { MyIcon } from '../../icons'
 
 export default {
     name: 'HeaderComponent',
+    emits: ['openBasket'],
     components: {
         MyIcon
+    },
+    setup() {
+        
     }
 }
 </script>

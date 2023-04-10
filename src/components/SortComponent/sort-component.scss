@@ -13,8 +13,22 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
+.sort__list {
+    position: absolute;
+    right: 65px;
+    font-weight: 500;
+    font-size: rem(12px);
+    line-height: 15px;
+    letter-spacing: 0.06em;
+    background: #fff;
+    & .sort__item {
+        padding: 16px 24px;
+    }
+}
+
 .sort__active {
     letter-spacing: 0.06em;
+
     &::after {
         content: "";
         display: inline-block;

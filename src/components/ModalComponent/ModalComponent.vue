@@ -1,12 +1,14 @@
 <template>
-    <div id="modal" class="modal" v-if="isShow">
-        <div @click.stop class="modal__content">
+    <div @click="closeModal" id="modal" class="modal" v-if="isShow">
+        <div class="modal__content">
             <slot name="content"></slot>
         </div>
     </div>
 </template>
 
 <script>
+import { toRefs } from 'vue'
+
 export default {
     name: 'ModalComponent',
     emits: [
@@ -18,9 +20,14 @@ export default {
             default: false
         }
     },
-    setup(props) {
-        console.log(props.isShow);
-
+    setup(props, context) {
+        const { isShow } = toRefs(props)
+        const closeModal = () => {
+            isShow.value = false
+        }
+        return {
+            closeModal
+        }
     }
 }
 </script>

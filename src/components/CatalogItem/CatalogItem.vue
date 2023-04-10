@@ -1,9 +1,9 @@
 <template>
     <div class="item">
         <img src="../../assets/Photo.png" alt="" class="item__img">
-        <div class="item__name">Краска Wallquest, Brownsone MS90102</div>
+        <div class="item__name">{{ name }}</div>
         <div class="item__footer">
-            <div class="item__footer-price">6000 ₽</div>
+            <div class="item__footer-price">{{ price }} ₽</div>
             <button class="item__footer-btn">
                 <my-icon name="PlusSvg" class="item__footer-icon" />
             </button>
@@ -16,6 +16,16 @@ import { MyIcon } from '../../icons'
 
 export default {
     name: 'CatalogItem',
+    props: {
+        name: {
+            type: String,
+            required: true
+        },
+        price: {
+            type: Number,
+            required: true
+        }
+    },
     components: {
         MyIcon
     }
