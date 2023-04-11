@@ -7,9 +7,9 @@
                 <div class="bakset__item-price">{{ price }} ₽</div>
             </div>
             <div class="basket__item-control">
-                <button class="basket__item-btn"><my-icon name="MinusSvg" class="basket__item-icon" /></button>
+                <button class="basket__item-btn" @click="$emit('onDecreaseQuantity', id)"><my-icon name="MinusSvg" class="basket__item-icon" /></button>
                 <span class="basket__item-quantity">{{ quantity }}</span>
-                <button class="basket__item-btn"><my-icon name="PlusSvg" class="basket__item-icon" /></button>
+                <button class="basket__item-btn" @click="$emit('onIncreaseQuantity', id)"><my-icon name="PlusSvg" class="basket__item-icon" /></button>
                 <button class="basket__item-remove" @click="$emit('onRemoveProductAtCart', id)">
                     <my-icon name="CloseSvg" class="basket__item-icon" />
                 </button>

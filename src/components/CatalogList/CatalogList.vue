@@ -25,6 +25,7 @@ export default {
         const { dispatch } = useStore()
         const addToCart = async (id) => {
             await dispatch('products/addToCart', id )
+            await dispatch('order/getOrder')
         }
         return {
             addToCart,

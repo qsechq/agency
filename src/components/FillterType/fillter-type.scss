@@ -38,7 +38,7 @@
     letter-spacing: 0.06em;
 }
 
-.fillter__input:checked ~  .fillter__item-visible {
+.fillter__input:checked ~ .fillter__item-visible {
     background: $backgroundBtn;
     justify-content: flex-end;
 }

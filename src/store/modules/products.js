@@ -4,20 +4,39 @@ export default {
   namespaced: true,
   state: {
     products: [],
-    fillter: ''
+    sort: 'priceUp',
+    selectedFillter: ''
   },
   getters: {
     getProductdById: (state) => (id) => state.products.find((item) => item.id === id),
     sortedProducts: (state) => {
-      return [...state.products].sort((post1, post2) => post1[state.fillter] > post2[state.fillter] ? 1 : -1)
-    }
+      if (state.sort === 'priceUp') {
+        return [...state.products].sort((post1, post2) => post1['price'] > post2['price'] ? -1 : 1)
+      } else if (state.sort === 'price') {
+        return [...state.products].sort((post1, post2) => post1[state.sort] > post2[state.sort] ? 1 : -1)
+      } else if (state.sort === 'new') {
+        return [...state.products].sort((post1, post2) => post1[state.sort] > post2[state.sort] ? -1 : 1)
+      } else if (state.sort === 'popular') {
+        return [...state.products].sort((post1, post2) => post1[state.sort] > post2[state.sort] ? -1 : 1)
+      }
+    },
+    sortedAndFiltered(state, getters) {
+      if (state.selectedFillter != '') {
+        return getters.sortedProducts.filter(post => post[state.selectedFillter] === true);
+      } else {
+        return getters.sortedProducts
+      }
+    },
   },
   mutations: {
     SET_PRODUCTS(state, payload) {
       state.products = payload
     },
+    SET_SORT(state, payload) {
+      state.sort = payload
+    },
     SET_FILLTER(state, payload) {
-      state.fillter = payload
+      state.selectedFillter = payload
     }
   },
   actions: {
@@ -29,14 +48,6 @@ export default {
         console.log(e)
       }
     },
-    // async addToCart( productData ) {
-    //   try {
-    //     console.log(productData);
-    //     await api.products.addToCart({ id: productData.id, name: productData.name, price: productData.price, quantity: 1 })
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
-    // },
     async addToCart({ getters }, id) {
       try {
         const product = getters.getProductdById(id)
@@ -44,6 +55,9 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    changeSort({ commit }, value) {
+      commit('SET_SORT', value)
     },
     changeFillter({ commit }, value) {
       commit('SET_FILLTER', value)

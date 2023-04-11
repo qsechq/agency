@@ -14,9 +14,14 @@
             <ul class="basket__list">
                 <li class="basket__item" v-for="product in order.order" :key="product.id">
                     <basket-item :id="product.id" :name="product.name" :price="product.price" :quantity="product.quantity"
-                        @onRemoveProductAtCart="removeProductAtCart(product.id)" />
+                        @onRemoveProductAtCart="removeProductAtCart(product.id)"
+                        @onIncreaseQuantity="increaseQuantity(product.id)"
+                        @onDecreaseQuantity="decreaseQuantity(product.id)" />
                 </li>
             </ul>
+            <div class="basket__footer">
+                <div class="basket__footer-price">{{ price() }}</div>
+            </div>
         </div>
         <h3 class="basket__title" v-else>
             Вы ничего не добавили в корзину
@@ -28,7 +33,7 @@
 import { BasketItem } from '../BasketItem'
 import { MyIcon } from '../../icons'
 import { useStore } from 'vuex'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 export default {
     name: 'BasketComponent',
@@ -43,9 +48,26 @@ export default {
         const removeProductAtCart = async (id) => {
             await dispatch('order/removeProductAtCart', id)
         }
+        const increaseQuantity = async (id) => {
+            await dispatch('order/increaseQuantity', id)
+        }
+        const price = () => {
+            let obj = order.value.order
+            console.log(obj.reduce((a, b) => a + (b['price'] || 0), 0));
+            return obj.reduce((a, b) => a + (b['price'] || 0), 0);
+        }
+        const decreaseQuantity = async (id) => {
+            await dispatch('order/decreaseQuantity', id)
+        }
+        onMounted(() => {
+            price()
+        })
         return {
             order,
-            removeProductAtCart
+            removeProductAtCart,
+            increaseQuantity,
+            decreaseQuantity,
+            price
         }
     }
 }

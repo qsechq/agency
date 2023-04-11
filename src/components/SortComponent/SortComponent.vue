@@ -4,18 +4,18 @@
         <teleport to="#sort">
             <modal-component :isShow="isShow" class="modal__sort">
                 <template #content>
-                    <ul :style="{ top: openModal() + 'px'}" class="sort__list" ref="test">
+                    <ul :style="{ top: openModal() + 'px'}" class="sort__list" ref="sortList">
                         <li class="sort__item">
-                            <button @click="changeFillter('expensive')" class="sort__btn">СНАЧАЛА ДОРОГИЕ</button>
+                            <button @click="changeSort('priceUp')" class="sort__btn">СНАЧАЛА ДОРОГИЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button @click="changeFillter('cheap')" class="sort__btn">СНАЧАЛА НЕДОРОГИЕ</button>
+                            <button @click="changeSort('price')" class="sort__btn">СНАЧАЛА НЕДОРОГИЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button @click="changeFillter('popular')" class="sort__btn">СНАЧАЛА ПОПУЛЯРНЫЕ</button>
+                            <button @click="changeSort('popular')" class="sort__btn">СНАЧАЛА ПОПУЛЯРНЫЕ</button>
                         </li>
                         <li class="sort__item">
-                            <button @click="changeFillter('new')" class="sort__btn">СНАЧАЛА НОВЫЕ</button>
+                            <button @click="changeSort('new')" class="sort__btn">СНАЧАЛА НОВЫЕ</button>
                         </li>
                     </ul>
                 </template>
@@ -36,12 +36,13 @@ export default {
     },
     setup() {
         const { dispatch } = useStore()
-        const changeFillter = (value) => {
-            dispatch('products/changeFillter', value)
-        }
         const isShow = ref(false)
         const sort = ref(null)
-        const test = ref(null)
+        const sortList = ref(null)
+        const changeSort = (value) => {
+            isShow.value = false
+            dispatch('products/changeSort', value)
+        }
         const openModal = () => {
             isShow.value = true
             let coords = sort.value.getBoundingClientRect()
@@ -49,14 +50,14 @@ export default {
         }
         onMounted(() => {
             sort.value
-            test.value
+            sortList.value
         })
         return {
             isShow,
             sort,
             openModal,
-            test,
-            changeFillter
+            sortList,
+            changeSort
         }
     }
 }

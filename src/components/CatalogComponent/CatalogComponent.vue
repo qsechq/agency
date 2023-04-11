@@ -23,7 +23,8 @@ import { FillterType } from '../FillterType'
 import { SettingsComponent } from '../SettingsComponent'
 import { CatalogList } from "../CatalogList"
 import { useStore } from 'vuex'
-import { computed, onMounted  } from 'vue'
+import { computed, onMounted } from 'vue'
+
 
 export default {
     name: 'CatalogComponent',
@@ -34,13 +35,12 @@ export default {
     },
     setup() {
         const { dispatch, getters } = useStore()
-        const sortedProducts = computed(() => getters.sortedProducts)
-        onMounted( () => {
-            dispatch('products/getProducts')
-            console.log(getters);
+
+        onMounted( async () => {
+            await dispatch('products/getProducts')
         })
         return {
-            sortedProducts
+            sortedProducts: computed(() => getters['products/sortedAndFiltered'])
         }
     }
 }

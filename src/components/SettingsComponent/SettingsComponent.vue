@@ -1,7 +1,7 @@
 <template>
     <div class="c-settings">
         <div class="settings__count">
-           {{ products.products.length }} товаров
+           {{ products.length }} товаров
         </div>
         <div class="sort">
             <sort-component />
@@ -20,8 +20,8 @@ export default {
         SortComponent
     },
     setup() {
-        const { state } = useStore()
-        const products = computed(() => state.products)
+        const { getters } = useStore()
+        const products = computed(() => getters['products/sortedAndFiltered'])
         return {
             products
         }
