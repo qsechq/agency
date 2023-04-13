@@ -20,11 +20,19 @@ export default {
         return [...state.products].sort((post1, post2) => post1[state.sort] > post2[state.sort] ? -1 : 1)
       }
     },
-    sortedAndFiltered(state, getters) {
+    sortedAndFiltered: (state, getters) => {
       if (state.selectedFillter.length > 0) {
-        let selectedFillter = [...state.selectedFillter].join(' ')
-        console.log(selectedFillter);
-        return getters.sortedProducts.filter(post => post[selectedFillter] === true);
+        let arr = []
+        let test = [...state.selectedFillter]
+        for (let i = 0; test.length > i; i++) {
+            getters.sortedProducts.filter((el) => {
+              if(el[test[i]] === true) {
+                return arr.push(el)
+              }
+            })
+        }
+        console.log(arr);
+        return arr
       } else {
         return getters.sortedProducts
       }
