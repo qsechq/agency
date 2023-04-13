@@ -20,7 +20,13 @@
                 </li>
             </ul>
             <div class="basket__footer">
-                <div class="basket__footer-price">{{ price() }}</div>
+                <div class="basket__footer-info">
+                    <div class="basket__footer-text">
+                        Итого
+                    </div>
+                    <div class="basket__footer-price">{{ price() }} ₽</div>
+                </div>
+                <button class="basket__footer-btn">Оформить заказ</button>
             </div>
         </div>
         <h3 class="basket__title" v-else>
@@ -53,8 +59,11 @@ export default {
         }
         const price = () => {
             let obj = order.value.order
-            console.log(obj.reduce((a, b) => a + (b['price'] || 0), 0));
-            return obj.reduce((a, b) => a + (b['price'] || 0), 0);
+            let sum = 0
+            obj.forEach(element => {
+                sum += element['price'] * element['quantity']
+            });
+            return sum;
         }
         const decreaseQuantity = async (id) => {
             await dispatch('order/decreaseQuantity', id)

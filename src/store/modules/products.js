@@ -5,7 +5,7 @@ export default {
   state: {
     products: [],
     sort: 'priceUp',
-    selectedFillter: ''
+    selectedFillter: []
   },
   getters: {
     getProductdById: (state) => (id) => state.products.find((item) => item.id === id),
@@ -21,8 +21,10 @@ export default {
       }
     },
     sortedAndFiltered(state, getters) {
-      if (state.selectedFillter != '') {
-        return getters.sortedProducts.filter(post => post[state.selectedFillter] === true);
+      if (state.selectedFillter.length > 0) {
+        let selectedFillter = [...state.selectedFillter].join(' ')
+        console.log(selectedFillter);
+        return getters.sortedProducts.filter(post => post[selectedFillter] === true);
       } else {
         return getters.sortedProducts
       }

@@ -54,3 +54,22 @@
     width: 24px;
     height: 24px;
 }
+
+.basket__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-text {
+        font-size: rem(16px);
+        line-height: 100%;
+    }
+    &-price {
+        font-size: rem(30px);
+        line-height: 100%;
+    }
+    &-btn {
+        background: $backgroundBtn;
+        border-radius: 4px;
+        padding: 20px 58px;
+    }
+}

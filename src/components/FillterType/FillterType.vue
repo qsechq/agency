@@ -2,7 +2,7 @@
     <ul class="fillter__list">
         <li class="fillter__item">
             <label for="new" class="fillter__label">
-                <input  @change="changeFillter('new')" id="new" value="new" name="type" type="checkbox" class="fillter__input">
+                <input  @change="changeFillter('new')" id="new" name="type" type="checkbox" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -11,7 +11,7 @@
         </li>
         <li class="fillter__item">
             <label for="quantity" class="fillter__label">
-                <input @change="changeFillter('quantity')" id="quantity" value="quantity" name="type" type="checkbox" class="fillter__input">
+                <input @change="changeFillter('quantity')" id="quantity" name="type" type="checkbox" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -20,7 +20,7 @@
         </li>
         <li class="fillter__item">
             <label for="contract" class="fillter__label">
-                <input  @change="changeFillter('contract')" id="contract" value="contract" name="type" type="checkbox" class="fillter__input">
+                <input   @change="changeFillter('contract')" id="contract" name="type" type="checkbox" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -29,7 +29,7 @@
         </li>
         <li class="fillter__item">
             <label for="exclusive" class="fillter__label">
-                <input @change="changeFillter('exclusive')" id="exclusive" value="exclusive" name="type" type="checkbox" class="fillter__input">
+                <input v-model="checkedFillter" @change="changeFillter()" value="exclusive" id="exclusive" name="type" type="checkbox" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -38,7 +38,7 @@
         </li>
         <li class="fillter__item">
             <label for="sale" class="fillter__label">
-                <input @change="changeFillter('sale')" id="sale" value="sale" name="type" type="checkbox" class="fillter__input">
+                <input v-model="checkedFillter" @change="changeFillter()" value="sale" id="sale" name="type" type="checkbox" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
@@ -57,20 +57,23 @@ export default {
     setup() {
         const { state, dispatch } = useStore()
         const selectedFillter = computed(() => state.products.selectedFillter)
-        const changeFillter = (value) => {
-            let oldValue = selectedFillter.value
-            console.log(value);
-            if( oldValue === value ) {
-                dispatch('products/changeFillter', '')
-            } else if(oldValue === ''){
-                dispatch('products/changeFillter', value)
-            } else {
-                console.warn(oldValue);
-                dispatch('products/changeFillter', value)
-            }
+        const checkedFillter = ref([])
+        const changeFillter = () => {
+            // let oldValue = selectedFillter.value
+            // console.log(value);
+            // if( oldValue === value ) {
+            //     dispatch('products/changeFillter', '')
+            // } else if(oldValue === ''){
+            //     dispatch('products/changeFillter', value)
+            // } else {
+            //     console.warn(oldValue);
+            //     dispatch('products/changeFillter', value)
+            // }
+            dispatch('products/changeFillter', selectedFillter.value = checkedFillter.value)
         }
         return {
-            selectedFillter,
+
+            checkedFillter,
             changeFillter
         }
     }
