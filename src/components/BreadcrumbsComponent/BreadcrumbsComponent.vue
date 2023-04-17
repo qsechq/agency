@@ -15,5 +15,4 @@
 </script>
 
 <style lang="scss" scoped src="./breadcrumbs-component.scss"> 
-
 </style>

@@ -134,6 +134,12 @@
     left: 64px;
 }
 
+.footer {
+    background: #000;
+    height: rem(320px);
+    margin-top: rem(140px);
+}
+
 @include small-width {
     .container {
         padding: 0 24px;
@@ -156,6 +162,12 @@
 
     .header {
         padding: rem(21px) 0 rem(18px);
+    }
+
+    .footer {
+        background: #000;
+        height: rem(270px);
+        margin-top: rem(68px);
     }
     
 

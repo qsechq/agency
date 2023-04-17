@@ -35,6 +35,9 @@
         </swiper-slide>
     </swiper>
     <catalog-component />
+    <footer class="footer">
+        
+    </footer>
     <teleport to="#basket">
         <modal-component :isShow="isShow">
             <template #content>

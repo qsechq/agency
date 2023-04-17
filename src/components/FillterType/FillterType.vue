@@ -70,7 +70,6 @@ export default {
         const removeChecked = () => {
             for (let radio of document.querySelectorAll('[type="radio"]')) {
                 if(radio.value === checkedFillter.value) {
-                    console.log('1');
                     radio.checked = false
                     selectedFillter.value = ''
                     checkedFillter.value = selectedFillter.value
