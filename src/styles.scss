@@ -1,9 +1,11 @@
 $color-black: #1F2020;
 $baseFontSize: 16px;
 $backgroundBtn: #7BB899;
+$bigLaptops: 1439px;
+$smallLaptops: 1280px;
 $small-width: 990px;
 $tablets: 768px;
-$phones: 420px;
+$phones: 480px;
 
 body,
 html {
@@ -82,6 +84,22 @@ button {
   padding: 0 65px;
 }
 
+@mixin bigLaptops {
+  @media screen and (max-width: $bigLaptops) {
+
+    @content;
+
+  }
+}
+
+@mixin smallLaptops {
+  @media screen and (max-width: $smallLaptops) {
+
+    @content;
+
+  }
+}
+
 
 @mixin small-width {
   @media screen and (max-width: $small-width) {
@@ -110,3 +128,4 @@ button {
 @function rem($px) {
     @return $px / $baseFontSize + 0rem
 }
+

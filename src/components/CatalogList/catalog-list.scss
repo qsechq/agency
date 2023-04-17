@@ -9,7 +9,92 @@
     width: calc( 19% - 12px);
     max-width: rem(278px);
     margin-right: rem(24px);
+    margin-bottom: rem(14px);
+    border-top: 1px solid rgb(0, 0, 0, 0.1);
+    padding-top: 16px;
+    &:nth-child( -n + 5) {
+        padding-top: 0;
+        border-top: none;
+    }
     &:nth-child(5n) {
         margin-right: 0;
     }
+}
+
+@include bigLaptops {
+    .catalog__item {
+        width: calc(24% - 12px);
+        max-width: unset;
+        &:nth-child(5) {
+            border-top: 1px solid rgb(0, 0, 0, 0.1);
+            padding-top: 16px;
+        }
+        &:nth-child( -n + 4) {
+            padding-top: 0;
+            border-top: none;
+        }
+        &:nth-child(5n) {
+            margin-right: rem(24px);
+        }
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+    }
+
+}
+
+@include smallLaptops {
+    .catalog__item {
+        width: calc(32% - 12px);
+        max-width: unset;
+        &:nth-child(4) {
+            border-top: 1px solid rgb(0, 0, 0, 0.1);
+            padding-top: 16px;
+        }
+        &:nth-child( -n + 3) {
+            padding-top: 0;
+            border-top: none;
+        }
+        &:nth-child(3n) {
+            margin-right: 0;
+        }
+        &:nth-child(4n) {
+            margin-right: rem(24px);
+        }
+    }
+
+}
+
+@include phones {
+    .catalog__item {
+        width: calc(49% - 5px);
+        max-width: unset;
+        margin-right: rem(10px);
+        margin-bottom: rem(34px);
+        &:nth-child(3) {
+            border-top: 1px solid rgb(0, 0, 0, 0.1);
+            padding-top: 16px;
+        }
+        &:nth-child( -n + 2) {
+            padding-top: 0;
+            border-top: none;
+        }
+        &:nth-child(3n) {
+            margin-right: rem(10px);
+        }
+        &:nth-child(4n) {
+            margin-right: rem(10px);
+        }
+        &:nth-child(5n) {
+            margin-right: rem(10px);
+        }
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+    }
+
+    .c-catalog__list {
+        justify-content: space-between;
+    }
+
 }

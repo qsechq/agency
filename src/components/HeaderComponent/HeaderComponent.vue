@@ -1,5 +1,10 @@
 <template>
     <div class="c-header">
+        <div class="burger">
+            <span class="burger__plank burger__plank--top"></span>
+            <span class="burger__plank burger__plank--midle"></span>
+            <span class="burger__plank burger__plank--bottom"></span>
+        </div>
         <router-link :to="{ name: 'catalog' }" class="logo">
             <my-icon name="LogoSvg" class="logo__icon" />
         </router-link>

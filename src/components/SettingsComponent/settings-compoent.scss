@@ -13,3 +13,40 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
+
+.settings__fillter {
+    display: none;
+}
+
+@include small-width {
+    .settings__count {
+        display: none;
+    }
+
+    .settings__fillter {
+        display: block;
+        font-size: rem(12px);
+        line-height: 15px;
+        letter-spacing: 0.06em;
+    }
+
+    .catalog__title {
+        margin-bottom: 46px;
+    }
+
+    .fillter__modal-btn {
+        width: 28px;
+        height: 4px;
+        /* left: 174px; */
+        /* top: 172px; */
+        background: #1F2020;
+        opacity: 0.6;
+        border-radius: 40px;
+        display: block;
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+}

@@ -26,6 +26,7 @@
 
 .basket__item-remove {
     margin-left: rem(37px);
+
     & .basket__item-icon {
         width: 24px;
         height: 24px;
@@ -38,6 +39,7 @@
 
 .basket__item-btn {
     padding: 4px 12px;
+
     & .basket__item-icon {
         width: 16px;
         height: 16px;
@@ -52,7 +54,7 @@
 
 .bakset__item-price {
     font-weight: 600;
-    font-size:rem(16px);
+    font-size: rem(16px);
     padding-top: rem(16px);
     line-height: 100%;
 }
@@ -71,4 +73,23 @@
 .basket__item-btn {
     background: #F2F2F2;
     border-radius: 4px;
+}
+
+@include tablets {
+    .basket__item-main {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .basket__item-wrap {
+        max-width: unset;
+    }
+
+    .basket__item-control {
+        width: 100%;
+    }
+
+    .basket__item-remove {
+        margin-left: auto;
+    }
 }

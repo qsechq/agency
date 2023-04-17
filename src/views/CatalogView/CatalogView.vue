@@ -7,7 +7,16 @@
     <swiper id="swiper" :pagination="true" :slides-per-view="1" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange"
         :navigation="true" :modules="modules">
         <swiper-slide>
+            <div class="x-breadcrumbs">
+                <breadcrumbs-component></breadcrumbs-component>
+            </div>
             <img src="../../assets/slider.png" alt="product" class="swiper__img">
+            <div class="swiper__block">
+                <h1 class="swiper__block-title">Краски</h1>
+                <div class="swiper__block-text">
+                    Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
+                </div>
+            </div>
         </swiper-slide>
         <swiper-slide>
             <img src="../../assets/slider.png" alt="product" class="swiper__img">
@@ -42,6 +51,7 @@ import { HeaderComponent } from '../../components/HeaderComponent'
 import { BasketComponent } from '../../components/BasketComponent'
 import { ModalComponent } from '../../components/ModalComponent'
 import { CatalogComponent } from '@/components/CatalogComponent'
+import { BreadcrumbsComponent } from '@/components/BreadcrumbsComponent'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination, Navigation } from 'swiper'
 import { ref } from 'vue'
@@ -56,7 +66,8 @@ export default {
         SwiperSlide,
         CatalogComponent,
         ModalComponent,
-        BasketComponent
+        BasketComponent,
+        BreadcrumbsComponent
     },
     setup() {
         const onSwiper = (swiper) => {

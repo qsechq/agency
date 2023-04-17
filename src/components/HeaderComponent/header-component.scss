@@ -3,8 +3,10 @@
 .c-header {
     display: flex;
     align-items: center;
+
     & .logo {
         margin-right: 9.5%;
+
         &__icon {
             width: rem(131px);
             height: rem(26px);
@@ -14,17 +16,21 @@
     & .nav {
         padding: 0;
         flex-grow: 1;
+
         &__list {
             display: flex;
             align-items: center;
             white-space: nowrap;
         }
+
         &__item {
             margin-right: rem(24px);
+
             &:last-child {
                 margin-right: 0;
             }
         }
+
         &__link {
             font-family: 'Inter';
             font-size: rem(14px);
@@ -42,10 +48,12 @@
         line-height: rem(16px);
         white-space: nowrap;
         margin-right: 6.5%;
+
         &__phone {
             font-weight: 500;
             letter-spacing: -0.02em;
         }
+
         &__btn {
             font-size: rem(14px);
             opacity: 0.3;
@@ -54,20 +62,25 @@
 
     & .icons {
         margin-left: auto;
+
         &__list {
             display: flex;
             align-items: center;
         }
+
         &__item {
             margin-right: rem(24px);
+
             &:last-child {
                 margin-right: 0;
             }
         }
+
         &__icon {
             width: rem(22px);
             height: rem(22px);
         }
+
         &__basket {
             border-radius: 50%;
             min-width: rem(24px);
@@ -80,5 +93,78 @@
             font-size: rem(12px);
         }
     }
-    
+
+}
+
+.burger {
+    display: none;
+}
+
+@include bigLaptops {
+    .c-header .logo {
+        margin-right: 5%;
+    }
+}
+
+@include smallLaptops {
+    .icons__item {
+        display: none;
+
+        &:last-child {
+            display: flex;
+        }
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .c-header .contacts {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+
+        &__plank {
+            background: #1F2020;
+            margin-bottom: 4px;
+        }
+
+        &__plank--top {
+            width: 24px;
+            height: 2px;
+            display: block;
+        }
+
+        &__plank--midle {
+            width: 24px;
+            height: 2px;
+            display: block;
+        }
+
+        .burger__plank--bottom {
+            width: 24px;
+            height: 2px;
+            display: block;
+            margin-bottom: 0;
+        }
+    }
+
+    .c-header {
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(31, 32, 32, 0.06);
+        padding-bottom: 20px;
+        .logo {
+            margin-right: 0;
+            &__icon {
+                width: rem(99px);
+                height: rem(21px);
+            }
+        }
+
+        & .icons {
+            margin-left: 0;
+        }
+    }
 }

@@ -5,7 +5,7 @@ export default {
   state: {
     products: [],
     sort: 'priceUp',
-    selectedFillter: []
+    selectedFillter: ''
   },
   getters: {
     getProductdById: (state) => (id) => state.products.find((item) => item.id === id),
@@ -21,56 +21,50 @@ export default {
       }
     },
     sortedAndFiltered: (state, getters) => {
-      if (state.selectedFillter.length > 0) {
-        let arr = []
-        let test = [...state.selectedFillter]
-        for (let i = 0; test.length > i; i++) {
-            getters.sortedProducts.filter((el) => {
-              if(el[test[i]] === true) {
-                return arr.push(el)
-              }
-            })
-        }
-        console.log(arr);
-        return arr
+      if (state.selectedFillter != '') {
+        let selectedFillter = state.selectedFillter
+        return getters.sortedProducts.filter((el) => {
+           return el[selectedFillter] === true
+        })
+
       } else {
-        return getters.sortedProducts
-      }
-    },
-  },
-  mutations: {
-    SET_PRODUCTS(state, payload) {
-      state.products = payload
-    },
-    SET_SORT(state, payload) {
-      state.sort = payload
-    },
-    SET_FILLTER(state, payload) {
-      state.selectedFillter = payload
+      return getters.sortedProducts
     }
   },
-  actions: {
-    async getProducts({ commit }) {
-      try {
-        const { data } = await api.products.getProducts()
-        commit('SET_PRODUCTS', data)
-      } catch (e) {
-        console.log(e)
-      }
-    },
-    async addToCart({ getters }, id) {
-      try {
-        const product = getters.getProductdById(id)
-        await api.products.addToCart({ id: product.id, name: product.name, price: product.price, quantity: 1 })
-      } catch (e) {
-        console.log(e)
-      }
-    },
-    changeSort({ commit }, value) {
-      commit('SET_SORT', value)
-    },
-    changeFillter({ commit }, value) {
-      commit('SET_FILLTER', value)
-    }
+},
+mutations: {
+  SET_PRODUCTS(state, payload) {
+    state.products = payload
+  },
+  SET_SORT(state, payload) {
+    state.sort = payload
+  },
+  SET_FILLTER(state, payload) {
+    state.selectedFillter = payload
   }
+},
+actions: {
+    async getProducts({ commit }) {
+    try {
+      const { data } = await api.products.getProducts()
+      commit('SET_PRODUCTS', data)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+    async addToCart({ getters }, id) {
+    try {
+      const product = getters.getProductdById(id)
+      await api.products.addToCart({ id: product.id, name: product.name, price: product.price, quantity: 1 })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  changeSort({ commit }, value) {
+    commit('SET_SORT', value)
+  },
+  changeFillter({ commit }, value) {
+    commit('SET_FILLTER', value)
+  }
+}
 }

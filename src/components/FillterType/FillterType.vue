@@ -1,8 +1,9 @@
 <template>
     <ul class="fillter__list">
         <li class="fillter__item">
-            <label for="new" class="fillter__label">
-                <input  @change="changeFillter('new')" id="new" name="type" type="checkbox" class="fillter__input">
+            <label @click="removeChecked()" for="new" class="fillter__label">
+                <input v-model="checkedFillter" @change="changeFillter()" value="new" id="new" name="type"
+                     type="radio" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -10,8 +11,9 @@
             <span class="fillter__name">Новинки</span>
         </li>
         <li class="fillter__item">
-            <label for="quantity" class="fillter__label">
-                <input @change="changeFillter('quantity')" id="quantity" name="type" type="checkbox" class="fillter__input">
+            <label @click="removeChecked()" for="quantity" class="fillter__label">
+                <input v-model="checkedFillter" @change="changeFillter()" value="quantity" id="quantity"
+                    name="type" type="radio" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -19,8 +21,9 @@
             <span class="fillter__name">Есть в наличии</span>
         </li>
         <li class="fillter__item">
-            <label for="contract" class="fillter__label">
-                <input   @change="changeFillter('contract')" id="contract" name="type" type="checkbox" class="fillter__input">
+            <label @click="removeChecked()" for="contract" class="fillter__label">
+                <input v-model="checkedFillter" @change="changeFillter()" value="contract" id="contract"
+                    name="type" type="radio" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -28,8 +31,9 @@
             <span class="fillter__name">Контрактные</span>
         </li>
         <li class="fillter__item">
-            <label for="exclusive" class="fillter__label">
-                <input v-model="checkedFillter" @change="changeFillter()" value="exclusive" id="exclusive" name="type" type="checkbox" class="fillter__input">
+            <label @click="removeChecked()" for="exclusive" class="fillter__label">
+                <input v-model="checkedFillter" @change="changeFillter()" value="exclusive" id="exclusive" name="type"
+                     type="radio" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -37,8 +41,9 @@
             <span class="fillter__name">Эксклюзивные</span>
         </li>
         <li class="fillter__item">
-            <label for="sale" class="fillter__label">
-                <input v-model="checkedFillter" @change="changeFillter()" value="sale" id="sale" name="type" type="checkbox" class="fillter__input">
+            <label @click="removeChecked()" for="sale" class="fillter__label">
+                <input v-model="checkedFillter" @change="changeFillter()" value="sale" id="sale" name="type"
+                     type="radio" class="fillter__input">
                 <div class="fillter__item-visible">
                     <span class="fillter__item-circ"></span>
                 </div>
@@ -57,24 +62,27 @@ export default {
     setup() {
         const { state, dispatch } = useStore()
         const selectedFillter = computed(() => state.products.selectedFillter)
-        const checkedFillter = ref([])
+        const checkedFillter = ref('')
+        const inputChecked = ref(null)
         const changeFillter = () => {
-            // let oldValue = selectedFillter.value
-            // console.log(value);
-            // if( oldValue === value ) {
-            //     dispatch('products/changeFillter', '')
-            // } else if(oldValue === ''){
-            //     dispatch('products/changeFillter', value)
-            // } else {
-            //     console.warn(oldValue);
-            //     dispatch('products/changeFillter', value)
-            // }
             dispatch('products/changeFillter', selectedFillter.value = checkedFillter.value)
         }
+        const removeChecked = () => {
+            for (let radio of document.querySelectorAll('[type="radio"]')) {
+                if(radio.value === checkedFillter.value) {
+                    console.log('1');
+                    radio.checked = false
+                    selectedFillter.value = ''
+                    checkedFillter.value = selectedFillter.value
+                    dispatch('products/changeFillter', '')
+                }
+            }
+        }
         return {
-
             checkedFillter,
-            changeFillter
+            changeFillter,
+            inputChecked,
+            removeChecked
         }
     }
 }

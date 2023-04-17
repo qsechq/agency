@@ -15,3 +15,41 @@
 .settings {
     margin-bottom: rem(44px);
 }
+
+.wrapp {
+    width: 100%;
+}
+
+.catalog__title {
+    display: none;
+}
+
+@include small-width {
+    .catalog__title {
+        display: block;
+        margin-bottom: rem(46px);
+    }
+
+    .settings {
+        margin-bottom: rem(24px);
+    }
+
+    .catalog__title-h1 {
+        font-weight: 400;
+        font-size: rem(36px);
+        line-height: 88%;
+        letter-spacing: -0.04em;
+    }
+    
+    .container {
+        padding: 0 24px;
+    }
+
+    .catalog__title-breadcrumbs {
+        margin-bottom: rem(48px);
+    }
+
+    .fillter {
+        display: none;
+    }
+}

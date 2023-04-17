@@ -1,7 +1,20 @@
 <template>
     <div class="c-settings">
+        <div class="settings__fillter">
+            <a @click.prevent="openModal()" href="#" class="settings__fillter-btn">ФИЛЬТРЫ</a>
+            <teleport to="#fillter">
+                <modal-component :isShow="isShow">
+                    <template #content>
+                        <div class="fillter">
+                            <a @click.prevent="closeModal()" href="#" class="fillter__modal-btn"></a>
+                            <fillter-type />
+                        </div>
+                    </template>
+                </modal-component>
+            </teleport>
+        </div>
         <div class="settings__count">
-           {{ products.length }} товаров
+            {{ products.length }} товаров
         </div>
         <div class="sort">
             <sort-component />
@@ -11,19 +24,33 @@
 
 <script>
 import { SortComponent } from "../SortComponent"
+import { FillterType } from '../FillterType'
 import { useStore } from 'vuex'
-import { computed } from "vue"
+import { computed, ref } from "vue"
+import { ModalComponent } from '../../components/ModalComponent'
 
 export default {
     name: 'SettingsComponent',
     components: {
-        SortComponent
+        SortComponent,
+        FillterType,
+        ModalComponent
     },
     setup() {
         const { getters } = useStore()
         const products = computed(() => getters['products/sortedAndFiltered'])
+        const isShow = ref(false)
+        const openModal = () => {
+            isShow.value = true
+        }
+        const closeModal = () => {
+            isShow.value = false
+        }
         return {
-            products
+            products,
+            openModal,
+            isShow,
+            closeModal
         }
     }
 }

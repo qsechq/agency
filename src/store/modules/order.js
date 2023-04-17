@@ -55,8 +55,13 @@ export default {
         async decreaseQuantity({ getters, commit }, id) {
             try {
                 const product = getters.getProductdById(id)
-                await api.order.decreaseQuantity({ id: product.id, quantity: product.quantity, name: product.name, price: product.price })
-                commit('DECREASE_QUANTITY', product)
+                if(product.quantity === 1) {
+                    await api.order.removeProductAtCart({ id: product.id })
+                    commit('DELETE_PRODUCT', product)
+                } else {
+                    await api.order.decreaseQuantity({ id: product.id, quantity: product.quantity, name: product.name, price: product.price })
+                    commit('DECREASE_QUANTITY', product)
+                }
             } catch (e) {
                 console.log(e)
             }

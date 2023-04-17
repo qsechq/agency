@@ -1,0 +1,1 @@
+export { default as BreadcrumbsComponent } from './BreadcrumbsComponent.vue'

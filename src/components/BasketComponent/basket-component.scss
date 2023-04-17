@@ -5,6 +5,7 @@
     height: 100%;
     width: rem(600px);
     padding: 40px;
+    overflow: auto;
 }
 
 .basket__title {
@@ -40,6 +41,7 @@
     line-height: 112%;
 }
 
+
 .basket__btn {
     border-radius: 50%;
     width: 48px;
@@ -48,6 +50,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.basket__list {
+    margin-bottom: rem(75px);
 }
 
 .basket__icon {
@@ -59,6 +65,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: absolute;
+    max-width: calc(  600px - 80px);
+    bottom: 0;
+    padding-bottom: 40px;
+    background: #fff;
+    width: 100%;
     &-text {
         font-size: rem(16px);
         line-height: 100%;
@@ -71,5 +83,35 @@
         background: $backgroundBtn;
         border-radius: 4px;
         padding: 20px 58px;
+    }
+}
+
+@include tablets {
+    .c-basket {
+        width: 100%;
+    }
+
+    .basket__footer {
+        max-width: calc(  100% - 80px);
+    }
+}
+
+@include phones {
+
+    .basket__list {
+        margin-bottom: rem(131px);
+    }
+
+    
+
+    .basket__footer {
+        flex-direction: column;
+        align-items: flex-start;
+        &-info {
+            margin-bottom: 10px;
+        }
+        &-btn { 
+            width: 100%;
+        }
     }
 }
